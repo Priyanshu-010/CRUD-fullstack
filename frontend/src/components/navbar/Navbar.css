@@ -1,0 +1,36 @@
+header {
+  position: sticky;          /* stays in view on scroll */
+  top: 0;
+  z-index: 9999;
+  background: linear-gradient(
+      120deg,
+      var(--brand) 0%,
+      var(--brand-light) 100%
+    );
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.06);
+}
+
+header .container {
+  display: flex;
+  align-items: center;
+  padding-block: 1rem;
+}
+
+/* Logo / Brand */
+header h1 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+  color: #ffffff;
+  transition: var(--transition);
+}
+
+header a {
+  text-decoration: none;
+}
+
+header a:hover h1,
+header a:focus-visible h1 {
+  opacity: 0.85;
+  transform: translateY(-1px);
+}

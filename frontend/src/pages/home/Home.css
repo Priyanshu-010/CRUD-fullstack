@@ -1,0 +1,14 @@
+/* Home page wrapper */
+.home {
+  display: grid;
+  place-items: center;
+  gap: 2rem;
+  animation: fade 400ms ease-in forwards;
+  opacity: 0;   /* allows fade-in */
+}
+
+@keyframes fade {
+  to {
+    opacity: 1;
+  }
+}
