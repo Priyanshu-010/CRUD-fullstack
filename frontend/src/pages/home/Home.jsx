@@ -23,7 +23,7 @@ const Home = () => {
       }
     }
     fetchProducts()
-  }, [])
+  }, [products])
   return (
     <div className="home">
       <div className='products'>

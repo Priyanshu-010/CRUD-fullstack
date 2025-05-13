@@ -27,6 +27,7 @@ const ProductsForm = () => {
         setDescription('');
         setPrice('');
         setError(null);
+        console.log(data._id)
       }
   }
   return (
