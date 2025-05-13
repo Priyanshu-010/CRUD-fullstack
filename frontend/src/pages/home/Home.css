@@ -1,14 +1,22 @@
-/* Home page wrapper */
 .home {
-  display: grid;
-  place-items: center;
-  gap: 2rem;
-  animation: fade 400ms ease-in forwards;
-  opacity: 0;   /* allows fade-in */
+  animation: fadeIn 400ms ease-in;
 }
 
-@keyframes fade {
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 2rem;
+  padding-top: 2rem;
+}
+
+/* Optional fade-in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
   to {
     opacity: 1;
+    transform: translateY(0);
   }
 }

@@ -2,6 +2,7 @@ import express from "express"
 import dotenv from "dotenv"
 import productRouter from "./routes/products.js"
 import { connectdb } from "./utils/connect.js";
+import cors from "cors"
 
 dotenv.config()
 
@@ -13,6 +14,7 @@ app.get("/", (req, res) => {
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
+app.use(cors())
 
 app.use("/api/products", productRouter)
 
