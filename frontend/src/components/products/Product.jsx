@@ -3,6 +3,7 @@ import './Products.css'
 import trash from '../../assets/delete.png'
 
 const Product = ({product}) => {
+  
 
   const handleClick = async()=>{
     await fetch(`http://localhost:3000/api/products/${product._id}`, {method: 'DELETE'})

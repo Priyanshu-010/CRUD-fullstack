@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
 import './ProductsForm.css'
+import { useProductsContext } from '../../hooks/UseProductsContext';
 
 const ProductsForm = () => {
+  const { dispatch } = useProductsContext();
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [price, setPrice] = useState('');
@@ -28,6 +30,7 @@ const ProductsForm = () => {
         setPrice('');
         setError(null);
         console.log(data._id)
+        dispatch({type: 'CREATE_PRODUCTS', payload: data})
       }
   }
   return (
