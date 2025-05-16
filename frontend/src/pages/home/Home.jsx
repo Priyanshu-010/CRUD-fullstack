@@ -4,15 +4,21 @@ import './Home.css'
 import Product from '../../components/products/Product.jsx'
 import ProductsForm from '../../components/productsForm/ProductsForm.jsx'
 import { useProductsContext } from '../../hooks/UseProductsContext.jsx'
+import { useAuthContext } from '../../hooks/UseAuthContext.jsx'
 
 const Home = () => {
+  const {user} = useAuthContext();
 
   // const [products, setProducts] = useState(null)
   const {products, dispatch} = useProductsContext();
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch('http://localhost:3000/api/products')
+        const response = await fetch('http://localhost:3000/api/products',{
+          headers:{
+            'Authorization': `Bearer ${user.token}`
+          }
+        })
         const data = await response.json()
 
         if (response.ok) {
@@ -24,8 +30,10 @@ const Home = () => {
         console.log(error)
       }
     }
-    fetchProducts()
-  }, [products, dispatch])
+    if(user){
+      fetchProducts()
+    }
+  }, [products, dispatch, user])
   return (
     <div className="home">
       <div className='products'>

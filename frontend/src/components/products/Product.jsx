@@ -2,13 +2,23 @@ import React from 'react';
 import './Products.css'
 import trash from '../../assets/delete.png'
 import { useProductsContext } from '../../hooks/UseProductsContext';
+import { useAuthContext } from '../../hooks/UseAuthContext';
 
 const Product = ({product}) => {
+  const {user} = useAuthContext();
 
   const { dispatch } = useProductsContext()
   const handleClick = async()=>{
+    if(!user){
+      return
+    }
     const response = await fetch(`http://localhost:3000/api/products/${product._id}`, 
-      {method: 'DELETE'})
+      {
+        method: 'DELETE',
+        headers: {
+          'Authorization': `Bearer ${user.token}`
+        }
+      })
     .then(console.log("Product deleted"))
     const data = response.json()
     if(response.ok){
