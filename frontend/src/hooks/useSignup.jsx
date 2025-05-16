@@ -26,6 +26,7 @@ const useSignup = () => {
       dispatch({type: 'LOGIN', payload: data});
       setIsLoading(false);
     }
+    console.log(data)
   }
   return {signup, isLoading, error}
 }
