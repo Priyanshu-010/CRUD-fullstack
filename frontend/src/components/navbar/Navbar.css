@@ -1,19 +1,20 @@
 header {
-  position: sticky;          /* stays in view on scroll */
+  position: sticky;
   top: 0;
   z-index: 9999;
   background: linear-gradient(
-      120deg,
-      var(--brand) 0%,
-      var(--brand-light) 100%
-    );
+    120deg,
+    var(--brand) 0%,
+    var(--brand-light) 100%
+  );
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.06);
 }
 
 header .container {
   display: flex;
+  justify-content: space-between; /* push nav links to the right */
   align-items: center;
-  padding-block: 1rem;
+  padding: 1rem 2rem;
 }
 
 /* Logo / Brand */
@@ -32,5 +33,25 @@ header a {
 header a:hover h1,
 header a:focus-visible h1 {
   opacity: 0.85;
+  transform: translateY(-1px);
+}
+
+/* Navigation Links */
+nav div {
+  display: flex;
+  gap: 1rem;
+}
+
+nav a {
+  color: #ffffff;
+  font-weight: 500;
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+nav a:hover,
+nav a:focus-visible {
+  background-color: rgba(255, 255, 255, 0.2);
   transform: translateY(-1px);
 }
