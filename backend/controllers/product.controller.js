@@ -2,15 +2,19 @@ import Product from "../models/products.model.js"
 
 export const getAllProducts = async (req, res) => {
   try {
-    const products = await Product.find().sort({createdAt: -1})
+    const user_id = req.user._id
+    const products = await Product.find({user_id}).sort({createdAt: -1})
     res.status(200).json(products)
   } catch (error) {
     res.status(500).json({ message: error.message })
   }
 }
 export const createProducts = async (req, res) => {
+  const {name, description, price} = req.body;
   try {
-    const products = await Product.create(req.body)
+    const user_id = req.user._id
+
+    const products = await Product.create({name, description, price, user_id})
     res.status(200).json(products)
   } catch (error) {
     res.status(500).json({ message: error.message })
